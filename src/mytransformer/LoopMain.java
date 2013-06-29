@@ -11,6 +11,7 @@ public class LoopMain {
         PackManager.v().getPack("jtp").add(new
                 Transform("jtp.loopanalysis",
                 new LoopTransformer()));
+        PackManager.v().getPack("jtp").add(new Transform("jtp.heapaccesstransformer", new HeapAccessTransformer()));
 
 
 // Invoke soot.Main with arguments given

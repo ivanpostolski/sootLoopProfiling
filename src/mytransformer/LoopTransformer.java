@@ -16,9 +16,9 @@ public class LoopTransformer extends BodyTransformer {
 
     static {
       listenerClass   = Scene.v().loadClassAndSupport("mytransformer.LoopListener");
-      startLoop = listenerClass.getMethod("void startLoop(int)");
+      startLoop = listenerClass.getMethod("void startLoop(java.lang.String)");
       startIter = listenerClass.getMethod("void startIteration()");
-      endLoop = listenerClass.getMethod("void endLoop(int)");
+      endLoop = listenerClass.getMethod("void endLoop(java.lang.String)");
 
     }
 
@@ -30,8 +30,9 @@ public class LoopTransformer extends BodyTransformer {
 
         for (Loop loop: loopFinderAdapter.loops()) {
             Stmt head = loop.getHead();
+            String loopId = b.getMethod().getSignature() + ":" + head.toString();
             //insert the start loop invocation but we aware of the redirect labels!
-            InvokeExpr startLoopExpr = Jimple.v().newStaticInvokeExpr(startLoop.makeRef(),IntConstant.v(1));
+            InvokeExpr startLoopExpr = Jimple.v().newStaticInvokeExpr(startLoop.makeRef(),StringConstant.v(loopId));
             Stmt startLoopStmt = Jimple.v().newInvokeStmt(startLoopExpr);
             b.getUnits().insertBeforeNoRedirect(startLoopStmt,head);
 
@@ -45,7 +46,7 @@ public class LoopTransformer extends BodyTransformer {
             //get every loop exit and make the endLoop invocation (with properly loop number)
             for (Stmt exit: loop.getLoopExits()) {
                 for (Stmt target: loop.targetsOfLoopExit(exit)) {
-                    InvokeExpr endExpr = Jimple.v().newStaticInvokeExpr(endLoop.makeRef(),IntConstant.v(1));
+                    InvokeExpr endExpr = Jimple.v().newStaticInvokeExpr(endLoop.makeRef(),StringConstant.v(loopId));
                     Stmt endStmt = Jimple.v().newInvokeStmt(endExpr);
                     b.getUnits().insertBefore(endStmt,target);
                 }

@@ -5,8 +5,9 @@ import java.io.FileWriter;
 
 public class LoopListener {
 
-    public static synchronized void startLoop(int id) {
-        System.out.println("StartLoop");
+
+    public static synchronized void startLoop(String id) {
+        System.out.println("StartLoop: " + id);
     }
 
 
@@ -14,11 +15,11 @@ public class LoopListener {
         System.out.println("StartIter");
     }
 
-    public static synchronized void  endLoop(int id) {
-        System.out.println("EndLoop");
+    public static synchronized void  endLoop(String id) {
+        System.out.println("EndLoop: " + id);
     }
 
-    public static synchronized void read(int ip, long val) {
-        System.out.println("Read(" + ip +"," + val + ")");
+    public static synchronized void read(String id, int val) {
+        System.out.println("Read:( From:" + id +", Value:" + val + ")");
     }
 }
