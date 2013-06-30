@@ -5,21 +5,23 @@ import java.io.FileWriter;
 
 public class LoopListener {
 
+    private static LoopAnalizer loopAnalizer = new PrintLoopAnalizer();
+
 
     public static synchronized void startLoop(String id) {
-        System.out.println("StartLoop: " + id);
+        loopAnalizer.startLoop(id);
     }
 
 
     public static synchronized void startIteration() {
-        System.out.println("StartIter");
+        loopAnalizer.startIteration();
     }
 
-    public static synchronized void  endLoop(String id) {
-        System.out.println("EndLoop: " + id);
+    public static synchronized void endLoop(String id) {
+        loopAnalizer.endLoop(id);
     }
 
     public static synchronized void read(String id, int val) {
-        System.out.println("Read:( From:" + id +", Value:" + val + ")");
+        loopAnalizer.read(id,val);
     }
 }
