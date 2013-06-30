@@ -11,15 +11,14 @@ import java.util.*;
 public class LoopTransformer extends BodyTransformer {
 
      /* some internal fields */
-    static SootClass listenerClass;
-    static SootMethod startLoop, startIter, endLoop;
+    private SootClass listenerClass;
+    private SootMethod startLoop, startIter, endLoop;
 
-    static {
-      listenerClass   = Scene.v().loadClassAndSupport("mytransformer.LoopListener");
-      startLoop = listenerClass.getMethod("void startLoop(java.lang.String)");
-      startIter = listenerClass.getMethod("void startIteration()");
-      endLoop = listenerClass.getMethod("void endLoop(java.lang.String)");
-
+    public LoopTransformer(String clazz) {
+        listenerClass   = Scene.v().loadClassAndSupport(clazz);
+        startLoop = listenerClass.getMethod("void startLoop(java.lang.String)");
+        startIter = listenerClass.getMethod("void startIteration()");
+        endLoop = listenerClass.getMethod("void endLoop(java.lang.String)");
     }
 
 

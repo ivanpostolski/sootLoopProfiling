@@ -5,6 +5,8 @@ import soot.*;
 import soot.JastAddJ.AssignExpr;
 import soot.jimple.*;
 import soot.jimple.internal.JAssignStmt;
+import soot.jimple.internal.JimpleLocal;
+import soot.jimple.internal.VariableBox;
 import soot.util.Chain;
 
 import java.util.Iterator;
@@ -13,11 +15,11 @@ import java.util.Map;
 public class HeapAccessTransformer extends BodyTransformer {
 
     /* some internal fields */
-    static SootClass listenerClass, systemClass;
-    static SootMethod readArray,identityHashCode;
+    private SootClass listenerClass, systemClass;
+    private SootMethod readArray,identityHashCode;
 
-    static {
-        listenerClass   = Scene.v().loadClassAndSupport("mytransformer.LoopListener");
+    public HeapAccessTransformer(String clazz) {
+        listenerClass   = Scene.v().loadClassAndSupport(clazz);
         readArray = listenerClass.getMethod("void read(java.lang.String,int)");
         systemClass = Scene.v().loadClassAndSupport("java.lang.System");
         identityHashCode = systemClass.getMethod("int identityHashCode(java.lang.Object)");
@@ -44,33 +46,19 @@ public class HeapAccessTransformer extends BodyTransformer {
             }
 
             if (stmt.containsArrayRef()) {
-                ArrayRef arrayRef = stmt.getArrayRef();
                 //has an array-ref but still can be a write operation
                 if (((JAssignStmt) stmt).getRightOp() instanceof ArrayRef) {
-                    // now we reach the real instruction
-                    // call Chain.insertBefore() to insert instructions
-                    //
-                    // 1. first, make a new invoke expression
                     String readId = stmt.toString();
+                    StaticInvokeExpr identityExpr = Jimple.v().newStaticInvokeExpr(identityHashCode.makeRef(),((JAssignStmt) stmt).getLeftOp());
+                    Local l = Jimple.v().newLocal("myvar" + body.getLocalCount(),IntType.v());
+                    body.getLocals().add(l);
+                    AssignStmt assign = Jimple.v().newAssignStmt(l,identityExpr);
+                    body.getUnits().insertAfter(assign,stmt);
 
-                    InvokeExpr identityExpr = Jimple.v().newStaticInvokeExpr(identityHashCode.makeRef(),((JAssignStmt) stmt).getLeftOp());
-
-                    Stmt identityStmt = Jimple.v().newInvokeStmt(identityExpr);
-
-                    units.insertAfter(identityStmt, stmt);
-
-//                    InvokeExpr readExpr= Jimple.v().newStaticInvokeExpr(readArray.makeRef(),
-//                            StringConstant.v(readId),Value);
-//                    // 2. then, make a invoke statement
-//                    Stmt incStmt = Jimple.v().newInvokeStmt(incExpr);
-
-                    // 3. insert new statement into the chain
-                    //    (we are mutating the unit chain).
-//                    units.insertBefore(incStmt, stmt);
-
+                    StaticInvokeExpr readExpr = Jimple.v().newStaticInvokeExpr(readArray.makeRef(),StringConstant.v(readId),l);
+                    Stmt readStmt = Jimple.v().newInvokeStmt(readExpr);
+                    body.getUnits().insertAfter(readStmt,assign);
                 }
-
-
             }
         }
 

@@ -6,12 +6,14 @@ import soot.Transform;
 
 public class LoopMain {
     public static void main(String[] args) {
-// Inject the analysis tagger into Soot
-//        PackManager.v().getPack("jtp").add(new Transform("jtp.instrumenter", new InvokeStaticInstrumenter()));
+
+
+
+// Adding custom transformers, first loop listener and then heap access.
         PackManager.v().getPack("jtp").add(new
                 Transform("jtp.loopanalysis",
-                new LoopTransformer()));
-        PackManager.v().getPack("jtp").add(new Transform("jtp.heapaccesstransformer", new HeapAccessTransformer()));
+                new LoopTransformer("mytransformer.LoopListener")));
+        PackManager.v().getPack("jtp").add(new Transform("jtp.heapaccesstransformer", new HeapAccessTransformer("mytransformer.LoopListener")));
 
 
 // Invoke soot.Main with arguments given
