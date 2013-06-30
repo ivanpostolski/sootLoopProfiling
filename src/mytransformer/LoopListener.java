@@ -5,7 +5,7 @@ import java.io.FileWriter;
 
 public class LoopListener {
 
-    private static LoopAnalizer loopAnalizer = new PrintLoopAnalizer();
+    private static LoopAnalizer loopAnalizer = new ToddlerLikeLoopAnalizer();
 
 
     public static synchronized void startLoop(String id) {
