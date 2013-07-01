@@ -14,12 +14,12 @@ public class Foo6 {
         anArray[2] = new ArrayList<String>();
 
 
-        for (int i=0; i < anArray.length; i++) {
-            Object nextOne = anArray[i];
-            System.out.println("HashCode Readed: " + System.identityHashCode(nextOne));
-            for (int j=0; j < anArray.length; j++) {
-                Object uselessOne = anArray[j];
-                System.out.println("UselessHashCodeReaded: " + System.identityHashCode(uselessOne));
+        for (int k = 0; k < 2222; k ++) {
+            for (int i=0; i < anArray.length; i++) {
+                Object nextOne = anArray[i];
+                for (int j=0; j < anArray.length; j++) {
+                    Object uselessOne = anArray[j];
+                }
             }
         }
     }
