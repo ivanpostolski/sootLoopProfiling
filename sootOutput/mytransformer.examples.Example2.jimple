@@ -1,0 +1,57 @@
+public class mytransformer.examples.Example2 extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        mytransformer.examples.Example2 r0;
+
+        r0 := @this: mytransformer.examples.Example2;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] r0;
+        int i0, i1;
+        java.io.PrintStream $r1, $r6;
+        java.lang.StringBuilder $r2, $r3, $r4;
+        java.lang.String $r5;
+
+        r0 := @parameter0: java.lang.String[];
+        i0 = 0;
+        staticinvoke <mytransformer.listeners.BasicLoopListener: void startLoop(java.lang.String)>("<mytransformer.examples.Example2: void main(java.lang.String[])>:if i0 >= 10 goto return");
+
+     label0:
+        if i0 >= 10 goto label3;
+
+        staticinvoke <mytransformer.listeners.BasicLoopListener: void startIteration()>();
+        $r1 = <java.lang.System: java.io.PrintStream out>;
+        $r2 = new java.lang.StringBuilder;
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" Elefantes se balanceaban sobre la tela de una arania");
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+        virtualinvoke $r1.<java.io.PrintStream: void println(java.lang.String)>($r5);
+        i1 = 0;
+        staticinvoke <mytransformer.listeners.BasicLoopListener: void startLoop(java.lang.String)>("<mytransformer.examples.Example2: void main(java.lang.String[])>:if i1 >= 1 goto i0 = i0 + 1");
+
+     label1:
+        if i1 >= 1 goto label2;
+
+        staticinvoke <mytransformer.listeners.BasicLoopListener: void startIteration()>();
+        $r6 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke $r6.<java.io.PrintStream: void println(java.lang.String)>("    Como veian que resistian fueron a llamar a otro elefante");
+        i1 = i1 + 1;
+        goto label1;
+
+     label2:
+        staticinvoke <mytransformer.listeners.BasicLoopListener: void endLoop(java.lang.String)>("<mytransformer.examples.Example2: void main(java.lang.String[])>:if i1 >= 1 goto i0 = i0 + 1");
+        i0 = i0 + 1;
+        goto label0;
+
+     label3:
+        staticinvoke <mytransformer.listeners.BasicLoopListener: void endLoop(java.lang.String)>("<mytransformer.examples.Example2: void main(java.lang.String[])>:if i0 >= 10 goto return");
+        return;
+    }
+}

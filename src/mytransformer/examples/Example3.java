@@ -1,12 +1,9 @@
-package mytransformer;
+package mytransformer.examples;
 
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-public class Foo5 {
+public class Example3 {
 
     public static void main(String[] args) {
         Object[] anArray = new Object[3];

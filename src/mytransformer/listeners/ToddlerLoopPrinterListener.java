@@ -1,12 +1,12 @@
-package mytransformer;
+package mytransformer.listeners;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 
-public class LoopListener {
+import mytransformer.analizers.LoopAnalizer;
+import mytransformer.analizers.ToddlerLoopPrinterAnalizer;
 
-    private static LoopAnalizer loopAnalizer = new ToddlerLoopAnalizer();
+public class ToddlerLoopPrinterListener extends BasicLoopListener {
 
+    private static LoopAnalizer loopAnalizer = new ToddlerLoopPrinterAnalizer();
 
     public static synchronized void startLoop(String id) {
         loopAnalizer.startLoop(id);
@@ -23,5 +23,6 @@ public class LoopListener {
 
     public static synchronized void read(String id, int val) {
         loopAnalizer.read(id,val);
-    }
+    };
+
 }

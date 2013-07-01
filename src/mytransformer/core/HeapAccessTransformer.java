@@ -1,4 +1,4 @@
-package mytransformer;
+package mytransformer.core;
 
 
 import soot.*;
@@ -53,7 +53,7 @@ public class HeapAccessTransformer extends BodyTransformer {
                     Local l = Jimple.v().newLocal("myvar" + body.getLocalCount(),IntType.v());
                     body.getLocals().add(l);
                     AssignStmt assign = Jimple.v().newAssignStmt(l,identityExpr);
-                    body.getUnits().insertAfter(assign,stmt);
+                    body.getUnits().insertAfter(assign, stmt);
 
                     StaticInvokeExpr readExpr = Jimple.v().newStaticInvokeExpr(readArray.makeRef(),StringConstant.v(readId),l);
                     Stmt readStmt = Jimple.v().newInvokeStmt(readExpr);

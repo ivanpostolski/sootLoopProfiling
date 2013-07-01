@@ -1,4 +1,4 @@
-package mytransformer;
+package mytransformer.core;
 
 import soot.Unit;
 import soot.jimple.Stmt;

@@ -1,0 +1,76 @@
+public class mytransformer.examples.Example4 extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        mytransformer.examples.Example4 r0;
+
+        r0 := @this: mytransformer.examples.Example4;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] r0;
+        java.lang.Object[] r1;
+        int i0, i1, i2, $i3, $i4, myvar11, myvar12;
+        java.lang.Object r2, r3;
+        java.lang.Integer $r4;
+        java.util.ArrayList $r5;
+
+        r0 := @parameter0: java.lang.String[];
+        r1 = newarray (java.lang.Object)[3];
+        $r4 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(15);
+        r1[0] = $r4;
+        r1[1] = "Pepe";
+        $r5 = new java.util.ArrayList;
+        specialinvoke $r5.<java.util.ArrayList: void <init>()>();
+        r1[2] = $r5;
+        i0 = 0;
+        staticinvoke <mytransformer.listeners.ToddlerPerformanceDetectionListener: void startLoop(java.lang.String)>("<mytransformer.examples.Example4: void main(java.lang.String[])>:if i0 >= 2222 goto return");
+
+     label0:
+        if i0 >= 2222 goto label5;
+
+        staticinvoke <mytransformer.listeners.ToddlerPerformanceDetectionListener: void startIteration()>();
+        i1 = 0;
+        staticinvoke <mytransformer.listeners.ToddlerPerformanceDetectionListener: void startLoop(java.lang.String)>("<mytransformer.examples.Example4: void main(java.lang.String[])>:$i3 = lengthof r1");
+
+     label1:
+        $i3 = lengthof r1;
+        staticinvoke <mytransformer.listeners.ToddlerPerformanceDetectionListener: void startIteration()>();
+        if i1 >= $i3 goto label4;
+
+        r2 = r1[i1];
+        myvar11 = staticinvoke <java.lang.System: int identityHashCode(java.lang.Object)>(r2);
+        staticinvoke <mytransformer.listeners.ToddlerPerformanceDetectionListener: void read(java.lang.String,int)>("r2 = r1[i1]", myvar11);
+        i2 = 0;
+        staticinvoke <mytransformer.listeners.ToddlerPerformanceDetectionListener: void startLoop(java.lang.String)>("<mytransformer.examples.Example4: void main(java.lang.String[])>:$i4 = lengthof r1");
+
+     label2:
+        $i4 = lengthof r1;
+        staticinvoke <mytransformer.listeners.ToddlerPerformanceDetectionListener: void startIteration()>();
+        if i2 >= $i4 goto label3;
+
+        r3 = r1[i2];
+        myvar12 = staticinvoke <java.lang.System: int identityHashCode(java.lang.Object)>(r3);
+        staticinvoke <mytransformer.listeners.ToddlerPerformanceDetectionListener: void read(java.lang.String,int)>("r3 = r1[i2]", myvar12);
+        i2 = i2 + 1;
+        goto label2;
+
+     label3:
+        staticinvoke <mytransformer.listeners.ToddlerPerformanceDetectionListener: void endLoop(java.lang.String)>("<mytransformer.examples.Example4: void main(java.lang.String[])>:$i4 = lengthof r1");
+        i1 = i1 + 1;
+        goto label1;
+
+     label4:
+        staticinvoke <mytransformer.listeners.ToddlerPerformanceDetectionListener: void endLoop(java.lang.String)>("<mytransformer.examples.Example4: void main(java.lang.String[])>:$i3 = lengthof r1");
+        i0 = i0 + 1;
+        goto label0;
+
+     label5:
+        staticinvoke <mytransformer.listeners.ToddlerPerformanceDetectionListener: void endLoop(java.lang.String)>("<mytransformer.examples.Example4: void main(java.lang.String[])>:if i0 >= 2222 goto return");
+        return;
+    }
+}

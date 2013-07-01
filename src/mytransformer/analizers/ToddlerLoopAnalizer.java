@@ -1,4 +1,4 @@
-package mytransformer;
+package mytransformer.analizers;
 
 import mytransformer.toddler.DynLoop;
 import mytransformer.toddler.Seq;

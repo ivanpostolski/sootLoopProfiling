@@ -1,0 +1,64 @@
+public class mytransformer.examples.Example3 extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        mytransformer.examples.Example3 r0;
+
+        r0 := @this: mytransformer.examples.Example3;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] r0;
+        java.lang.Object[] r1;
+        int i0, i1, $i2, $i3, myvar10, myvar11;
+        java.lang.Object r2, r3;
+        java.lang.Integer $r4;
+        java.util.ArrayList $r5;
+
+        r0 := @parameter0: java.lang.String[];
+        r1 = newarray (java.lang.Object)[3];
+        $r4 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(15);
+        r1[0] = $r4;
+        r1[1] = "Pepe";
+        $r5 = new java.util.ArrayList;
+        specialinvoke $r5.<java.util.ArrayList: void <init>()>();
+        r1[2] = $r5;
+        i0 = 0;
+        staticinvoke <mytransformer.listeners.ToddlerLoopPrinterListener: void startLoop(java.lang.String)>("<mytransformer.examples.Example3: void main(java.lang.String[])>:$i2 = lengthof r1");
+
+     label0:
+        $i2 = lengthof r1;
+        staticinvoke <mytransformer.listeners.ToddlerLoopPrinterListener: void startIteration()>();
+        if i0 >= $i2 goto label3;
+
+        r2 = r1[i0];
+        myvar10 = staticinvoke <java.lang.System: int identityHashCode(java.lang.Object)>(r2);
+        staticinvoke <mytransformer.listeners.ToddlerLoopPrinterListener: void read(java.lang.String,int)>("r2 = r1[i0]", myvar10);
+        i1 = 0;
+        staticinvoke <mytransformer.listeners.ToddlerLoopPrinterListener: void startLoop(java.lang.String)>("<mytransformer.examples.Example3: void main(java.lang.String[])>:$i3 = lengthof r1");
+
+     label1:
+        $i3 = lengthof r1;
+        staticinvoke <mytransformer.listeners.ToddlerLoopPrinterListener: void startIteration()>();
+        if i1 >= $i3 goto label2;
+
+        r3 = r1[i1];
+        myvar11 = staticinvoke <java.lang.System: int identityHashCode(java.lang.Object)>(r3);
+        staticinvoke <mytransformer.listeners.ToddlerLoopPrinterListener: void read(java.lang.String,int)>("r3 = r1[i1]", myvar11);
+        i1 = i1 + 1;
+        goto label1;
+
+     label2:
+        staticinvoke <mytransformer.listeners.ToddlerLoopPrinterListener: void endLoop(java.lang.String)>("<mytransformer.examples.Example3: void main(java.lang.String[])>:$i3 = lengthof r1");
+        i0 = i0 + 1;
+        goto label0;
+
+     label3:
+        staticinvoke <mytransformer.listeners.ToddlerLoopPrinterListener: void endLoop(java.lang.String)>("<mytransformer.examples.Example3: void main(java.lang.String[])>:$i2 = lengthof r1");
+        return;
+    }
+}

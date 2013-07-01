@@ -1,4 +1,4 @@
-package mytransformer;
+package mytransformer.analizers;
 
 import mytransformer.toddler.DynLoop;
 import mytransformer.toddler.Seq;
@@ -14,7 +14,7 @@ import java.util.Stack;
 /**
  *
  */
-public class ToddlerLoopPrinter implements LoopAnalizer{
+public class ToddlerLoopPrinterAnalizer implements LoopAnalizer{
 
     Stack<DynLoop> currentLoopStack = new Stack<DynLoop>();
 

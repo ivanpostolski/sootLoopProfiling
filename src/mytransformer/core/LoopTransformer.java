@@ -1,10 +1,9 @@
-package mytransformer;
+package mytransformer.core;
 
+import mytransformer.core.LoopFinderAdapter;
 import soot.*;
 import soot.jimple.*;
 import soot.jimple.toolkits.annotation.logic.Loop;
-import soot.toolkits.graph.ExceptionalUnitGraph;
-import soot.toolkits.graph.UnitGraph;
 
 import java.util.*;
 

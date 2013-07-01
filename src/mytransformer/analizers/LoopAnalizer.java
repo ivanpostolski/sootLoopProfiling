@@ -1,4 +1,4 @@
-package mytransformer;
+package mytransformer.analizers;
 
 /**
  *

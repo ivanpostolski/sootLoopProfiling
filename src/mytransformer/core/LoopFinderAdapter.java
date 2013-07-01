@@ -1,4 +1,4 @@
-package mytransformer;
+package mytransformer.core;
 
 import soot.Body;
 import soot.jimple.toolkits.annotation.logic.LoopFinder;

@@ -1,11 +1,11 @@
-package mytransformer;
+package mytransformer.examples;
 
 import java.util.ArrayList;
 
 /**
  *
  */
-public class Foo6 {
+public class Example4 {
 
     public static void main(String[] args) {
         Object[] anArray = new Object[3];
